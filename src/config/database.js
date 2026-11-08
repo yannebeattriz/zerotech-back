@@ -1,4 +1,3 @@
-
 const mysql = require("mysql2/promise");
 
 const db = mysql.createPool({
@@ -9,7 +8,7 @@ const db = mysql.createPool({
     database: process.env.DB_NAME,
 
     waitForConnections: true,
-    connectionLimit: 10,
+    connectionLimit: 2,
     queueLimit: 0
 });
 
