@@ -38,21 +38,22 @@ app.use("/fichas-epi", auth, fichasEpiRoutes);
 app.use("/documentos", auth, documentosRoutes);
 app.use("/riscos", auth, riscosRoutes);
 
-// Inicialização e teste do banco
+// Inicialização do servidor
 async function iniciarServidor() {
     try {
-        const conexao = await db.getConnection();
+        const conexao = await db.promise().getConnection();
 
         console.log("MySQL conectado com sucesso!");
 
         conexao.release();
 
-        app.listen(PORT, () => {
+        app.listen(PORT, "0.0.0.0", () => {
             console.log(`Servidor ZeroTech rodando na porta ${PORT}`);
         });
 
     } catch (error) {
         console.error("Erro ao conectar com MySQL:", error.message);
+        process.exit(1);
     }
 }
 
