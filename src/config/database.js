@@ -13,6 +13,5 @@ const db = mysql.createPool({
     queueLimit: 0
 });
 
-console.log("Pool MySQL configurado!");
-
-module.exports = db;
+// Transforma o pool em uma interface compatível com async/await
+module.exports = db.promise();
