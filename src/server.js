@@ -41,7 +41,7 @@ app.use("/riscos", auth, riscosRoutes);
 // Inicialização do servidor
 async function iniciarServidor() {
     try {
-        const conexao = await db.promise().getConnection();
+        const conexao = await db.getConnection();
 
         console.log("MySQL conectado com sucesso!");
 
